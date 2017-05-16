@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <form>
+    <input type="text" id="longWord" />
+    <input type="text" id="smallWord" />
+    <button type="button" name="button" onclick="textCompare()">Click</button>
+  </form>
+
+  <!-- profile service section -->
+          <!-- <div class="row profile-service-wrapper">
+						<div class="col-sm-6">
+							<div class="left-service-div">
+                <div class="service-block-v3 service-block-u">
+									<i class="fa fa-users"></i>
+									<span class="service-heading">Overall Visits</span>
+									<span class="counter">52,147</span>
+
+									<div class="clearfix margin-bottom-10"></div>
+
+									<div class="row">
+										<div class="col-xs-6 service-in">
+											<small class="service-heading">Last Week</small>
+											<h4 class="count counter">1,385</h4>
+										</div>
+										<div class="col-xs-6 text-right service-in">
+											<small class="service-heading">Last Month</small>
+											<h4 class="count counter">6,048</h4>
+										</div>
+									</div>
+									<div class="statistics">
+										<h3 class="heading-xs">Statistics in Progress Bar <span class="pull-right">67%</span></h3>
+										<div class="progress progress-u">
+											<div style="width: 67%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="67" role="progressbar" class="progress-bar progress-bar-light">
+											</div>
+										</div>
+										<small>11% less <strong>than last month</strong></small>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6">
+							<div class="right-service-div">
+                <div class="service-block-v3 service-block-blue">
+									<i class="fa fa-desktop"></i>
+									<span class="service-heading">Overall Page Views</span>
+									<span class="counter">324,056</span>
+
+									<div class="clearfix margin-bottom-10"></div>
+
+									<div class="row">
+										<div class="col-xs-6 service-in">
+											<small class="service-heading">Last Week</small>
+											<h4 class="counter count">26,904</h4>
+										</div>
+										<div class="col-xs-6 text-right service-in">
+											<small class="service-heading">Last Month</small>
+											<h4 class="counter count">124,766</h4>
+										</div>
+									</div>
+									<div class="statistics">
+										<h3 class="heading-xs">Statistics in Progress Bar <span class="pull-right">89%</span></h3>
+										<div class="progress progress-u">
+											<div style="width: 89%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="89" role="progressbar" class="progress-bar progress-bar-light">
+											</div>
+										</div>
+										<small>15% higher <strong>than last month</strong></small>
+									</div>
+								</div>
+              </div>
+						</div>
+					</div> -->
+
+  <script>
+
+function confirmEnding(str, target) {
+  var a = target.length;
+  var b = str.length;
+  var c = str.substring(b - a);
+  if(a > b) {
+    return false;
+  } else if(target === c) {
+      return true;
+    }
+  else
+    return false;
+}
+
+confirmEnding("Bastian", "n");
+
+
+function repeatStringNumTimes(str, num) {
+  // repeat after me
+  var newString = '';
+  if(num < 0)
+    return '';
+  else {
+    for( var i = 1; i <= num ; i++) {
+      newString += str;
+    }
+  }
+  return newString;
+}
+
+repeatStringNumTimes("abc", 3);
+
+
+
+function truncateString(str, num) {
+  // Clear out that junk in your trunk
+  var strLength = str.length;
+  if(strLength <= num) {
+    return str;
+  }
+  else if( num <= 3) {
+    var c = str.slice(0,num) + '...';
+    return c;
+  } else {
+    var e = str.slice(0, num - 3);
+    return e + '...';
+  }
+
+}
+
+truncateString("A-tisket a-tasket A green and yellow basket", 11);
+
+
+function chunkArrayInGroups(arr, size) {
+  // Break it up.
+  var b = [];
+  var c;
+  for(var i = 0; i <= arr.length - 1; i = i+size) {
+    c = arr.slice(i,size + i);
+    b.push(c);
+  }
+  return b;
+}
+
+chunkArrayInGroups(["a", "b", "c", "d"], 2);
+
+
+
+function slasher(arr, howMany) {
+  // it doesn't always pay to be first
+  var arrLength = arr.length;
+  var newArray;
+  if(howMany >= arrLength) {
+    return [];
+  }
+  else {
+    newArray = arr.slice(howMany);
+    return newArray;
+  }
+}
+
+slasher([1, 2, 3], 2);
+
+
+  function endingConfirm(a,b) {
+    var stringw = [] ;
+    var c = a.split("");
+    var wordlength = b.length;
+    var largewordlength = c.length;
+
+    if(wordlength > largewordlength){
+      return false;
+    }else {
+      while(wordlength > 0) {
+        stringw.push(c[largewordlength - wordlength])
+        wordlength--;
+      }
+      // for(var i = wordlength; i > 0; i--){
+      //
+      // }
+      var newword = stringw.join('');
+      if(b === newword)
+        return true;
+      else
+        return false;
+
+    }
+    // for(var i = largewordlength - wordlength; i <= largewordlength; i++) {
+    //   stringw.push(c[i]);
+    // }
+    // var newword =  stringw.join('');
+    // if(newword === b)
+    //   return true;
+    // else
+    //   return false;
+}
+
+function findLongest(a) {
+	const arrayNew = [];
+	const b = a.split(' ');
+	for(var i = 0; i <= b.length - 1; i++) {
+	  arrayNew.push(b[i].length);
+	}
+	const maxno = Math.max(...arrayNew);
+	return maxno;
+ }
+ findLongest("This is an apple");
+
+function findLongest(a) {
+	const arrayNew = [];
+	const b = a.split(' ');
+	for(var i = 0; i <= b.length - 1; i++) {
+	  arrayNew.push(b[i].length);
+	}
+	arrayNew.sort(function(a,b)
+		{
+		  return a - b;
+		});
+	console.log(arrayNew);
+  return arrayNew[arrayNew.length - 1];
+ }
+ findLongest("This is an apple of sanjita");
+
+  function textCompare() {
+    const a = document.getElementById("longWord").value;
+    const b = document.getElementById("smallWord").value;
+
+
+}
+
+function mutation(arr) {
+  var str = arr[0].split('');
+  var substr = arr[1].split('');
+  for(var i = 0; i< substr.length; i++) {
+    var term = substr[i];
+    var result = false;
+    for(var j = 0; j< str.length; j++) {
+      if (term === str[j]) {
+        result = true;
+      }
+    }
+    if(result === false) {
+      return false;
+    }
+  }
+  return result;
+}
+
+function mutation(arr) {
+  var str = arr[0].toLowerCase().split('');
+  var substr = arr[1].toLowerCase().split('');
+  var result = true;
+  for(var i = 0; i< substr.length; i++) {
+    result = false;
+    var term = substr[i];
+    for(var j = 0; j< str.length; j++) {
+      if (term === str[j]) {
+        result = true;
+      }
+    }
+    if(result === false) {
+      return false;
+    }
+  }
+  return result;
+}
+
+mutation(["hello", "hey"]);
+
+
+function bouncer(arr) {
+  // Don't show a false ID to this bouncer.
+   console.log(Boolean); return arr.filter(Boolean);
+}
+bouncer([NaN, "", "", false, 9]);
+
+function destroyer() {
+  // Remove all the values
+  var firstarg = arguments[0];
+  var secondarg = arguments[1];
+  var thirdarg = arguments[2];
+  var fourtharg = arguments[3];
+
+ var newarray = firstarg.filter(function (a) {
+      return (a !== secondarg);
+  });
+ var newarrays = newarray.filter(function (b) {
+      return (b !== thirdarg);
+  });
+var newarraysb = newarrays.filter(function (c) {
+      return (c !== fourtharg);
+  });
+  return newarraysb;
+}
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+function rot13(s) {
+  return s.replace(/[A-Z]/g, function (c) {
+    return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".charAt(
+           "NOPQRSTUVWXYZABCDEFGHIJKLM".indexOf(c)
+    );
+  } );
+}rot13("SERR PBQR PNZC");
+
+
+function getIndexToIns(arr, num) {
+  // Find my place in this sorted array.
+  arr.push(num);
+  arr.sort(function(a,b) {
+    return a - b;
+  });
+  var indexval = arr.indexOf(num);
+  return indexval;
+}
+
+getIndexToIns([40, 60], 50);
+
+// fibonacii of n no. sum of odd no. between them
+function fibonacci(n) {
+  var a = 0;
+  var b = 1;
+  var fib = 0;
+
+	var sum = 0;
+	while(fib <= n) {
+  	a = b;
+		b = fib;
+		fib = a + b;
+		console.log(b);
+
+		if( b % 2 !== 0) {
+			sum = sum + b;
+    }
+	}
+	return sum;
+} fibonacci(1000);
+
+function primeNum(n) {
+  var sum = 0;
+	for(var i = 1; i<= n; i++) {
+    var counter = 0;
+    for(var j=1; j<=i; j++) {
+      if(i % j === 0) {
+        counter++;
+			}
+    }
+    if(counter === 2) {
+      sum = sum + i;
+    }
+  }
+return sum;
+}
+primeNum(10);
+
+
+function smallestCommons(arr) {
+  arr.sort(function(a,b) {
+    return a-b;
+  });
+
+  var maxNo = arr[1];
+  var smallNo = arr[0];
+  var temp = false;
+  var num = maxNo;
+  var result;
+  var j = 1;
+
+  while(temp === false) {
+    flag = true;
+   for(var i = smallNo; i<= maxNo; i++) {
+     if(result % i !== 0) {
+       flag = false;
+       break;
+     }
+   }
+    if(flag === true) {
+      temp = true;
+    }
+    else{
+      j++;
+    result = num * j;
+    }
+  }
+   return result;
+}
+
+smallestCommons([1,5]);
+
+
+function rot13(str) { // LBH QVQ VG!
+  var splitString = str.split("");
+  var test = splitString.map((val) => {
+    if(val !== ' '){
+      var ch = val.charCodeAt(0);
+     if(ch < 65 || ch > 90){
+       return String.fromCharCode(ch);
+     }else if (ch < 78) {
+        return String.fromCharCode(ch + 13);
+      }
+
+      return String.fromCharCode(ch - 13);
+    }
+  });
+  test = test.map((val) => {
+    if(!val){
+      return ' ';
+    }else {
+      return val;
+    }
+  });
+  console.log(test);
+  return test.join("");
+}
+
+function sumAll(arr) {
+  var list = [];
+  arr.sort(function(a,b) {
+    return a - b;
+  });
+
+  for(i=arr[0]; i <= arr[1]; i++) {
+    list.push(i);
+  }
+  var sum = list.reduce(function(total,a) {
+    return total + a;
+  });
+  return sum;
+}
+
+sumAll([1, 4]);
+
+function isVowel(char) {
+ if(char === 'a' || char === 'e' || char === 'i' || char === 'o' || char === 'u')   {
+    return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+function translatePigLatin(str) {
+  var newString = str.toLowerCase().split('');
+  var list = [];
+
+  if(isVowel(newString[0])) {
+    return str + 'way';
+  } else {
+    for(var k = 0; k <= newString.length - 1; k++) {
+     if(isVowel(newString[k])) {
+      for(var i = 0; i < k; i++) {
+        list.push(newString[i]);
+      }
+      var word = str.substr(k);
+      return word + list.join('') + 'ay';
+    }
+  }
+
+  }
+}
+
+translatePigLatin("glove");
+
+function findElement(arr, func) {
+  var b = arr.filter(func);
+  return b[0];
+}
+
+findElement([1, 2, 3, 4], function(num){ return num % 2 === 0; });
+
+function dropElements(arr, func) {
+  // Drop them elements.
+  var abc = arr.filter(func);
+  var index = arr.indexOf(abc[0]);
+  if(index === -1) {
+    return abc;
+  }
+  else {
+    return arr.slice(index);
+  }
+
+}
+
+dropElements([1, 2, 3, 4], function(n) {return n > 5; });
+
+
+function booWho(bool) {
+  // What is the new fad diet for ghost developers? The Boolean.
+  if(bool === Boolean) {
+    return true;
+  } else if(bool === true || bool === false) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+booWho(null);
+
+  </script>
+</body>
+</html>

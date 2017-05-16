@@ -1,0 +1,44 @@
+.inner-div {
+  width: 386px;
+  height: 165px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.button {
+  width: 150px;
+  height: 75px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 8px black;
+  transition: all 1s;
+  margin-right: 15px;
+}
+.button:hover {
+  cursor: pointer;
+}
+.bg-red {
+  background-color: red;
+}
+.bg-green {
+  background-color: green;
+}
+.bg-yellow {
+  background-color: yellow;
+}
+.bg-pink {
+  background-color: orange;
+}
+.playing {
+  border: 3px solid magenta;
+  transform: scale(1.1);
+}
+.levelText {
+  font-size: 17px;
+  margin: 25px auto;
+}
+.result {
+  font-size: 21px;
+  color: green;
+}

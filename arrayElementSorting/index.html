@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <Button>
+    click
+  </Button>
+  <Script>
+
+  function largestOfFour(arr) {
+
+    var cd = [];
+    arr.map(function (myarr) {
+      myarr.sort(function (a,b) {
+        return a - b;
+      });
+       cd.push(myarr[myarr.length - 1]);
+     });
+    return cd;
+  }
+
+    function maxArray(a) {
+      let d = [];
+      const a = [[2, 5], [7, 6], [8, 9]];
+      for(let i = 0; i <= a.length - 1; i++)
+      {
+      const b = a[i]; const c = Math.max(...b);
+       d.push(c);
+      }
+      return d;
+
+    } maxArray(a);
+  </Script>
+</body>
+</html>

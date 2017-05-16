@@ -1,0 +1,42 @@
+body {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+form {
+  width: 100%;
+  margin: 50px auto;
+  text-align: center;
+}
+input {
+  width: 70%;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(241, 221, 44);
+  border-image: initial;
+  padding: 7px;
+  font-size: 17px;
+}
+input:focus {
+  outline: none;
+}
+button {
+  background-color: black;
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+  font-size: 15px;
+  border: 0;
+}
+.dataList {
+  background-color: rgba(255, 0, 0, 0.7);
+  padding: 10px;
+  margin: 20px 90px;
+  transition: all .5s ease-in-out;
+}
+.dataList:hover {
+  cursor: pointer;
+  box-shadow: 5px 8px 5px rgba(255, 0, 0, 0.5);
+}
+a, p ,small {
+  color: white;
+  text-decoration: none;
+}

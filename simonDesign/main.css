@@ -1,0 +1,132 @@
+html {
+  background-color: #314F5E;
+}
+.wrapper {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background-color: #282C34;
+  border-radius: 100%;
+  margin: auto;
+  text-align: center;
+  box-shadow: 0px 0px 12px #282C34;
+}
+.inner-wrapper {
+  margin: 0;
+  text-align: center;
+  position: relative;
+  top: 8px;
+}
+.top-left-r {
+  border-top-left-radius: 100%;
+}
+.top-right-r {
+  border-top-right-radius: 100%;
+}
+.bottom-left-r {
+  border-bottom-left-radius: 100%;
+}
+.border-right-r {
+  border-bottom-right-radius: 100%;
+}
+.green {
+  background-color: #00B099;
+}
+.red {
+  background-color: #FF0042;
+}
+.blue {
+  background-color: #0092BF;
+}
+.yellow {
+  background-color: #E8CA3A;
+}
+.clickable-div {
+  position: relative;
+  border: 7px solid #282C34;
+  width: 175px;
+  height: 175px;
+}
+.display-inline {
+  display: inline-block;
+}
+.half-circle {
+
+}
+.center-circle {
+  width: 170px;
+  height: 170px;
+  border-radius: 100%;
+  background-color: #ccc;
+  border: 7px solid #282C34;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -91px 0 0 -91px;
+}
+.game-name {
+  font-size: 25px;
+  margin-top: 31px;
+  margin-bottom: 10px;
+}
+.count {
+  color: red;
+  width: 50px;
+  height: 30px;
+  line-height: 30px;
+  background-color: black;
+  border-radius: 8px;
+  margin: 0;
+}
+.controller-div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.round-btn {
+  width: 20px;
+  height: 20px;
+  border: 5px solid #282C34;
+  box-shadow: 2px 0px 3px #282C34;
+  border-radius: 100%;
+  cursor: pointer;
+  margin: auto;
+}
+.start-bg {
+  background-color: red;
+}
+.strict-bg {
+  background-color: yellow;
+}
+.label {
+  font-size: 11px;
+  margin-top: 4px;
+  font-weight: normal;
+}
+.on-off-div {
+  display: flex;
+  justify-content: center;
+}
+.switch-slider {
+  width: 40px;
+  height: 15px;
+  position: relative;
+  background-color: black;
+  margin: 0 7px;
+  border-radius: 3px;
+  border: 2px solid #282C34;
+}
+.switch {
+  width: 19px;
+  height: 13px;
+  background-color: green;
+  position: absolute;
+  border-radius: 3px;
+  border: 1px solid #282C34;
+}
+.off {
+  left: 0;
+}
+.on {
+  left: 20px;
+}
