@@ -46,6 +46,8 @@ html {
   border: 7px solid #282C34;
   width: 175px;
   height: 175px;
+  transition: all 1s;
+  cursor: pointer;
 }
 .display-inline {
   display: inline-block;
@@ -67,7 +69,7 @@ html {
 .game-name {
   font-size: 25px;
   margin-top: 31px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .count {
   color: red;
@@ -91,6 +93,16 @@ html {
   border-radius: 100%;
   cursor: pointer;
   margin: auto;
+}
+.led-light {
+  width: 5px;
+  height: 5px;
+  background-color: #B05C44;
+  border-radius: 100%;
+  border: 2px solid #282C34;
+}
+.strictOn {
+  background-color: red;
 }
 .start-bg {
   background-color: red;
@@ -129,4 +141,7 @@ html {
 }
 .on {
   left: 20px;
+}
+.playing {
+  background-color: green;
 }

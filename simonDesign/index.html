@@ -11,40 +11,208 @@
   <div class="wrapper">
     <div class="inner-wrapper">
       <div class="top half-circle">
-        <div class="green clickable-div top-left-r display-inline"></div>
-        <div class="red clickable-div top-right-r display-inline"></div>
+        <div class="green clickable-div top-left-r display-inline" id="1" data-key="1"></div>
+        <div class="red clickable-div top-right-r display-inline" id="2" data-key="2"></div>
       </div>
       <div class="bottom half-circle">
-        <div class="yellow clickable-div bottom-left-r display-inline"></div>
-        <div class="blue clickable-div border-right-r display-inline"></div>
+        <div class="yellow clickable-div bottom-left-r display-inline" id="3" data-key="3"></div>
+        <div class="blue clickable-div border-right-r display-inline" id="4" data-key="4"></div>
       </div>
     </div>
     <div class="center-circle">
       <h2 class="game-name">Simon Game</h2>
       <div class="controller-div">
         <div class="count-container display-inline">
-          <div class="count">--</div>
+          <div class="count" id="currentLevel">--</div>
           <h3 class="label">COUNT</h3>
         </div>
         <div class="round-btn-container display-inline">
-          <div class="round-btn start-bg"></div>
+          <div class="round-btn start-bg" id="start"></div>
           <h3 class="label">START</h3>
         </div>
-        <div class="round-btn-container display-inline">
-          <div class="round-btn strict-bg"></div>
+
+        <div class="round-btn-container display-inline" style="margin-top: -10px">
+          <div class="led-light" id="led"></div>
+          <div class="round-btn strict-bg" id="strict"></div>
           <h3 class="label">STRICT</h3>
         </div>
       </div>
-      <div class="on-off-div display-inline">
+      <!-- <div class="on-off-div display-inline">
         <h3 class="label display-inline">OFF</h3>
-        <!-- <label class="switch">
-          <input type="checkbox">
-          <div class="slider round"></div>
-        </label> -->
-        <div class="switch-slider display-inline"><div class="switch display-inline off"></div></div>
+        <div class="switch-slider display-inline"><div class="switch display-inline off" id="onOrOff"></div></div>
         <h3 class="label display-inline">ON</h3>
-      </div>
+      </div> -->
     </div>
   </div>
+ <audio data-key="1" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></audio>
+ <audio data-key="2" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
+ <audio data-key="3" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
+ <audio data-key="4" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+ <script type="text/javascript">
+    // Let us create a game object.
+    var game = {
+      levelCount: 0,
+      currentGame: [],
+      player: [],
+      sound: {
+       a: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
+       b: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
+       c: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
+       d: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3')
+     },
+     strict: false
+    }
+
+    function newGame(){
+      clearGame();
+    }
+
+    function clearGame(){
+      game.levelCount = 0;
+      game.currentGame = [];
+      // Let us increase the game level count to 1.
+      increaseLevel();
+    }
+
+    function increaseLevel(){
+      var currentLevel = ++game.levelCount;
+      $('#currentLevel').text(currentLevel);
+      generateRandom();
+    }
+
+    function generateRandom(){
+        game.currentGame.push(Math.floor(Math.random() * (4)) + 1);
+        showMoves();
+    }
+
+    function showMoves(){
+      // Let us show the moves to the user.
+      console.log('The moves of the current Game: ',game.currentGame);
+      var i = 0;
+      var moves = setInterval(function(){
+        playMove(game.currentGame[i]);
+        i++;
+        if(i >= game.currentGame.length){
+          clearInterval(moves);
+        }
+      }, 600);
+      // Clearing the past moves of the user.
+      clearPlayer();
+    }
+
+    function playMove(val){
+      $(`#${val}`).addClass('playing');
+      playSound(val);
+      setTimeout(function(){
+        $(`#${val}`).removeClass('playing');
+      }, 300);
+    }
+
+    function playSound(val){
+      switch (val) {
+        case 1:
+          game.sound.a.play();
+        case 2:
+          game.sound.b.play();
+        case 3:
+          game.sound.c.play();
+        case 4:
+          game.sound.d.play();
+        default:
+          console.log('NO SOUND FOUND FOR THIS');
+      }
+    }
+    function clearPlayer(){
+      game.player = [];
+    }
+
+    $('#start').on('click', function(e){
+      e.preventDefault();
+      newGame();
+    });
+
+    function addToPlayer(val){
+      // Pushing the value of the input into the player array.
+      game.player.push(val);
+      console.log('The current value of the player array: ', game.player);
+      playerTurn(val);
+    }
+
+    function nextLevel(){
+      increaseLevel();
+    }
+
+    function playerTurn(val){
+      if(game.player[game.player.length - 1] !== game.currentGame[game.player.length - 1]){
+        if(game.strict){
+          alert('Strict mode on.. Start Again!');
+          newGame();
+        }else{
+          alert('Sorry wrong move! Try again');
+          showMoves();
+        }
+      } else {
+        console.log('Correct move...');
+        playSound(val);
+        if(game.player.length === game.currentGame.length){
+          if(game.levelCount === 20){
+            alert('You Win!!');
+          }else {
+            nextLevel();
+          }
+        }
+      }
+    }
+
+    // What will happen when we click on the respective buttons?
+    $('#1').on('click', function(e){
+      e.preventDefault();
+      $(this).addClass('playing');
+      setTimeout(function(){
+        $('#1').removeClass('playing');
+      }, 300);
+      addToPlayer(1);
+    });
+
+    $('#2').on('click', function(e){
+      e.preventDefault();
+      $(this).addClass('playing');
+      setTimeout(function(){
+        $('#2').removeClass('playing');
+      }, 300);
+      addToPlayer(2);
+    });
+
+    $('#3').on('click', function(e){
+      e.preventDefault();
+      $(this).addClass('playing');
+      setTimeout(function(){
+        $('#3').removeClass('playing');
+      }, 300);
+      addToPlayer(3);
+    });
+
+    $('#4').on('click', function(e){
+      e.preventDefault();
+      $(this).addClass('playing');
+      setTimeout(function(){
+        $('#4').removeClass('playing');
+      }, 300);
+      addToPlayer(4);
+    });
+    $('#strict').on('click', function(e) {
+      e.preventDefault();
+      if(game.strict) {
+        game.strict = false;
+        console.log(game.strict);
+        $('.led-light').removeClass('strictOn');
+      } else {
+        game.strict = true;
+        console.log(game.strict);
+        $('.led-light').addClass('strictOn');
+      }
+    })
+  </script>
 </body>
 </html>
